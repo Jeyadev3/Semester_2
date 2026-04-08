@@ -20,7 +20,8 @@ To build a strong foundation in Java through consistent practice and experimenta
 
 ## Author
 
-**Jeyadev T**,
+**Jeyadev T**
+
 Computer Science Engineering Student
 
 GitHub: https://github.com/Jeyadev3
