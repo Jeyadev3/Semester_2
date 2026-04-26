@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+</head>
+<body>
+    <h2>Simple Job Application Form</h2><br><br>
+    <label>Full Name</label><br>
+    <input type = "text" name = "Name" placeholder = "Enter your name and surname" style="width:400px"><br><br>
+    <label>Email address</label><br>
+    <input type = "email" name = "Email" placeholder = "Enter your email address" style="width:400px"><br><br>
+    <label>Address</label><br>
+    <input type = "text" name = "address" placeholder = "1234 Main St" style="width:400px"><br><br>
+    
+    <div id="container" style="display:flex;">
+        <div id="city">
+            <label>City</label><br>
+            <input type = "text" name = "place" placeholder = "Istanbul" >
+        </div>
+        <div id="zip" style="margin-left: 20px;">
+            <label>Zip</label><br>
+            <input type="tel" name="pincode" placeholder="34000" style="width:80px"> <br><br>
+        </div>
+    </div>
+    <label>Telephone</label><br>
+    <input type = "tel" name = "telephone" placeholder = "1-(555)-555-5555" style="width:400px"><br><br>
+    <label>Start Date</label><br>
+    <input type = "date" name = "date" style="width:400px"><br><br>
+    <label>Upload your CV :</label>
+    <input type = "file" name = "file" accept = ".pdf,.doc,.docx" ><br><br>
+    <input type = "button" name = "Submit" value = "Submit" style="background-color:rgb(98, 58, 243); color:white">
+
+</body>
+</html>
