@@ -1,26 +1,23 @@
 # Semester_2
 
-This repository contains the Java programs I write regularly to practice and improve my understanding of **core Java concepts and problem-solving**.
+This repository contains all the codes and projects I practiced during my 2nd semester.
 
-The purpose of this repository is to strengthen my programming fundamentals and track my learning progress while studying Java.
+## Included
 
-## Topics Covered
+- Java Programs
+- HTML
+- CSS
+- JavaScript
+- Mini Projects
+- Practice Problems
 
-* Basic Java syntax
-* Conditional statements
-* Loops
-* Methods
-* Arrays
-* Object-Oriented Programming concepts
-* Pattern programs and small coding exercises
+## Purpose
 
-## Goal
-
-To build a strong foundation in Java through consistent practice and experimentation.
+To improve my coding skills and learn programming through regular practice.
 
 ## Author
 
-**Jeyadev T**<br>
-Computer Science Engineering Student
+Jeyadev T  
+CSE Student
 
 GitHub: https://github.com/Jeyadev3
