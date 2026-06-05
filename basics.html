@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormValidation</title>
+
+    <script>
+        function focusField(x){
+            x.style.background="lightyellow";
+        }
+        function blurField(x){
+            x.style.background="white";
+        }
+        
+        function checkname(){
+            if (document.getElementById("name").value==""){
+                document.getElementById("nm").innerHTML = "name cannot be empty";
+            }
+            else{
+                document.getElementById("nm").innerHTML="";
+            }
+        }
+
+        function checkemail(){
+            var email=document.getElementById("email").value;
+            if(email.indexOf("@")==-1 || email.indexOf(".")==-1){
+                document.getElementById("em").innerHTML="Invalid Email";
+            }
+            else{
+                document.getElementById("em").innerHTML="";
+            }
+        }
+
+        function checkpasswd(){
+            var passwd=document.getElementById("passwd").value;
+            if(passwd.length<8){
+                document.getElementById("pass").innerHTML="Minimum 8 characters";
+            }
+            else{
+                document.getElementById("pass").innerHTML="";
+            }
+        }
+
+        function checkdob(){
+            var dob=document.getElementById("dob").value;
+            var year=new Date(dob).getFullYear();
+            var cyear=new Date().getFullYear();
+
+            if(year<1900 || cyear<year){
+                document.getElementById("dobb").innerHTML="Invalid DOB";
+            }
+            else{
+                document.getElementById("dobb").innerHTML="";
+            }
+        }
+
+        function charCount(){
+            var text=document.getElementById("comment").value;
+            document.getElementById("count").innerHTML = text.length;
+
+            if(text.length>50){
+                document.getElementById("cnt").innerHTML="Only 50 characters allowed";
+            }
+            else{
+                document.getElementById("cnt").innerHTML="";
+            }
+        }
+
+    </script>
+    <style>
+body{
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+form{
+    width: 500px;
+    margin: auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+input, textarea{
+    width: 90%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+span{
+    color: red;
+    font-size: 14px;
+}
+
+</style>
+
+</head>
+<body>
+    <form>
+        <label>Name</label>
+        <input type="text" id="name" onfocus="focusField(this)" onblur="blurField(this); checkname()"/>
+        <span id="nm" style="color:red"></span><br><br>
+        
+        <label>Email</label>
+        <input type="text" id="email" onfocus="focusField(this)" onblur="blurField(this); checkemail()" />
+        <span id="em" style="color:red"></span><br><br>
+        
+        <label>Password</label>
+        <input type="password" id="passwd" onfocus="focusField(this)" onblur="blurField(this); checkpasswd()" />
+        <span id="pass" style="color:red"></span><br><br>
+        
+        <label>DateofBirth</label>
+        <input type="date" id="dob" onfocus="focusField(this)" onblur="blurField(this); checkdob()" />
+        <span id="dobb" style="color:red"></span><br><br>
+        
+        <label>Upload</label>
+        <input type="file" /><br><br>
+
+        <label>Comments</label>
+        <textarea id="comment" onfocus="focusField(this)" onblur="blurField(this)" onkeyup="countChar()" ></textarea>
+        <span id="count"></span>
+        <span id="cnt" style="color:red"></span> <br><br>
+    </form>
+</body>
+</html>
