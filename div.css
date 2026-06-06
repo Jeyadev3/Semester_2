@@ -1,0 +1,8 @@
+.box{
+    border: 2px solid;
+    height:auto;
+    box-sizing:border-box;
+    width:50%;
+    padding:200px;
+    float:left;
+}
