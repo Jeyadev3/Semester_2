@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Event Registration</title>
+
+<style>
+body{
+    background-color: lightblue;
+}
+
+form{
+    width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+}
+
+input, textarea, select{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.btn{
+    background: green;
+    color: white;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: darkgreen;
+}
+
+span{
+    color: red;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<form id="form">
+
+Name:
+<input type="text" id="name">
+<span id="nmsg"></span><br>
+
+Email:
+<input type="text" id="email">
+<span id="emsg"></span><br>
+
+Phone:
+<input type="text" id="phone">
+<span id="pmsg"></span><br>
+
+Event Type:
+<input type="radio" name="event" value="Workshop">Workshop
+<input type="radio" name="event" value="Seminar">Seminar
+<input type="radio" name="event" value="Panel">Panel<br><br>
+
+Interests:
+<input type="checkbox" name="int" value="AI">AI
+<input type="checkbox" name="int" value="Blockchain">Blockchain
+<input type="checkbox" name="int" value="IoT">IoT<br><br>
+
+Country:
+<select id="country">
+<option>India</option>
+<option>USA</option>
+</select><br><br>
+
+Comments:
+<textarea id="comment"></textarea><br><br>
+
+<input type="submit" class="btn">
+<input type="reset" class="btn">
+
+<br><br>
+<span id="msg"></span>
+
+</form>
+
+<script>
+
+document.getElementById("name").addEventListener("blur", function(){
+    var name=this.value;
+
+    if(!isNaN(name))
+        document.getElementById("nmsg").innerHTML="Only letters allowed";
+    else
+        document.getElementById("nmsg").innerHTML="";
+});
+
+document.getElementById("email").addEventListener("blur", function(){
+    var email=this.value;
+
+    if(email.indexOf("@")==-1 || email.indexOf(".")==-1)
+        document.getElementById("emsg").innerHTML="Invalid Email";
+    else
+        document.getElementById("emsg").innerHTML="";
+});
+
+document.getElementById("phone").addEventListener("blur", function(){
+    var phone=this.value;
+
+    if(phone.length!=10 || isNaN(phone))
+        document.getElementById("pmsg").innerHTML="Invalid Phone";
+    else
+        document.getElementById("pmsg").innerHTML="";
+});
+
+document.getElementById("form").addEventListener("submit", function(e){
+
+    var name=document.getElementById("name").value;
+    var email=document.getElementById("email").value;
+    var phone=document.getElementById("phone").value;
+
+    var c=document.getElementsByName("int");
+    var flag=false;
+
+    for(var i=0;i<c.length;i++){
+        if(c[i].checked)
+            flag=true;
+    }
+
+    if(name=="" || email=="" || phone==""){
+        document.getElementById("msg").innerHTML="Fill all fields";
+        e.preventDefault();
+    }
+    else if(!flag){
+        document.getElementById("msg").innerHTML="Select at least one interest";
+        e.preventDefault();
+    }
+    else{
+        document.getElementById("msg").innerHTML="Registration Successful";
+    }
+});
+
+var events=document.getElementsByName("event");
+
+for(var i=0;i<events.length;i++){
+    events[i].addEventListener("change", function(){
+        document.getElementById("msg").innerHTML="Selected: "+this.value;
+    });
+}
+
+</script>
+
+</body>
+</html>
