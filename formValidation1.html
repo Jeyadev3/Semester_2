@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="validate()">
+        <label>name</label>
+        <input type="text" id="name" onfocus="focusField(this)" onblur="blurField(this); checkname()"/>
+        <span id="nm" style="color:red"></span><br><br>
+        <label>Email</label>
+        <input type="text" id="email" onfocus="focusField(this)" onbllur="blurField(this); checkemail()"/>
+        <span id="em" style="color:red"></span>
+        <label>Password</label>
+        <input type="password" id="passwd" onfocus="focusField(this)" onblur="blurField(this); checkpass()";
+        <span id="em" style="color:red"></span>
+
+    </form>
+</body>
+</html>
