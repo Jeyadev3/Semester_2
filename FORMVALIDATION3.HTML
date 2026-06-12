@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Energy Monitor</title>
+
+<style>
+body{
+    font-family: Arial;
+    background-color: lightblue;
+}
+
+form{
+    width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+}
+
+input, select, textarea{
+    width: 100%;
+    margin: 5px 0;
+}
+
+#cost{
+    font-weight: bold;
+}
+
+#msg{
+    color: red;
+}
+</style>
+
+</head>
+
+<body>
+
+<form id="form">
+
+Device:
+<select id="device">
+<option>AC</option>
+<option>Heater</option>
+<option>Washing Machine</option>
+</select><br><br>
+
+Power Mode:
+<input type="radio" name="mode" value="eco">Eco
+<input type="radio" name="mode" value="normal">Normal
+<input type="radio" name="mode" value="high">High<br><br>
+
+Time Usage:
+<input type="number" id="time"><br><br>
+
+Budget:
+<input type="range" id="budget" min="10" max="500"><br><br>
+
+Notes:
+<textarea id="note"></textarea><br><br>
+
+<input type="submit">
+<input type="reset"><br><br>
+
+Estimated Cost:
+<span id="cost"></span><br><br>
+
+<span id="msg"></span>
+
+</form>
+
+<script>
+
+document.getElementById("time").addEventListener("blur", function(){
+    var t=this.value;
+    if(t<10 || t>600)
+        document.getElementById("msg").innerHTML="Invalid time";
+    else
+        document.getElementById("msg").innerHTML="";
+});
+
+var modes=document.getElementsByName("mode");
+
+for(var i=0;i<modes.length;i++){
+    modes[i].addEventListener("change", function(){
+        var time=document.getElementById("time").value;
+        var cost=0;
+
+        if(this.value=="eco") cost=time*1;
+        else if(this.value=="normal") cost=time*2;
+        else cost=time*3;
+
+        document.getElementById("cost").innerHTML=cost;
+    });
+}
+
+document.getElementById("form").addEventListener("submit", function(e){
+
+    var time=document.getElementById("time").value;
+    var budget=document.getElementById("budget").value;
+    var mode=document.querySelector('input[name="mode"]:checked');
+
+    if(time<10 || time>600){
+        document.getElementById("msg").innerHTML="Invalid time";
+        e.preventDefault();
+    }
+    else if(!mode){
+        document.getElementById("msg").innerHTML="Select power mode";
+        e.preventDefault();
+    }
+    else if(budget>500){
+        document.getElementById("msg").innerHTML="Budget too high";
+        e.preventDefault();
+    }
+    else{
+        document.getElementById("msg").style.color="green";
+        document.getElementById("msg").innerHTML="Settings saved";
+    }
+});
+
+document.getElementById("device").addEventListener("mouseover", function(){
+    this.style.background="lightgreen";
+});
+
+</script>
+
+</body>
+</html>
