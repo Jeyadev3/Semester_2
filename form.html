@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission</title>
+
+    <style>
+        span{
+            color:red
+        }
+        body{
+            background-color: white;
+        }
+        form{
+            border: 2px solid red;
+            width: 400px;
+            margin-left: 500px;
+            background-color: bisque;
+            padding: 20px;
+        }
+        button{
+            background-color: blue;
+            color: aliceblue;
+        }
+       
+        button:hover{
+            background-color: aqua;
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        function focusEffect(x){
+            x.style.background = "lightblue";
+
+        }
+        function blurEffect(x){
+            x.style.background = "white"; 
+        }
+
+        function validatename(){
+            let name = document.getElementsByName("Name")[0].value;
+            let number = /[0-9]/;            
+            if(name.length < 3 || number.test(name)){
+                document.getElementById("nm").innerHTML = "Invalid name";
+            }
+            else{
+                document.getElementById("nm").innerHTML = ""
+            }
+        }
+
+        function validateemail(){
+            let email = document.getElementsByName("email")[0].value;
+            let atpos = email.indexOf("@");
+            let dotpos = email.indexOf(".");
+            if (atpos < 1 || dotpos - atpos < 2 ){
+                document.getElementById("em").innerHTML = "Invalid email";
+            }
+            else{
+                document.getElementById("em").innerHTML = "";
+            }
+        }
+
+        function validatepass(){
+            let pass = document.getElementsByName("password")[0].value;
+            let pattern = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#]).{8,}$/
+            if (!pattern.test(pass)){
+                document.getElementById("ps").innerHTML = "Invalid password";
+            }
+            else{
+                document.getElementById("ps").innerHTML = "";
+            }
+        }
+        
+        function validateage(){
+            let age = document.getElementsByName("age")[0].value;
+            if (age < 17 || age > 30){
+                document.getElementById("age").innerHTML = "Not acceptable";
+            }
+            else{
+                document.getElementById("age").innerHTML = "";
+            }
+        }
+
+    </script>
+    
+    <form>
+        <label>Name</label><br>
+        <input type="text" name="Name" onfocus="focusEffect(this)" onblur="blurEffect(this); validatename()" ><br>
+        <span id="nm"></span><br>
+
+        <label>Email</label><br>
+        <input type="text" name="email" onfocus="focusEffect(this)" onblur="blurEffect(this); validateemail()" ><br>
+        <span id="em"></span><br>
+
+        <label>Password</label><br>
+        <input type="text" name="password" onfocus="focusEffect(this)" onblur="blurEffect(this)" onkeyup="validatepass()" ><br>
+        <span id="ps" ></span><br>
+
+        <label>Age</label><br>
+        <input type="number" name="age" onfocus="focusEffect(this)" onblur="blurEffect(this); validateage()" ><br>
+        <span id="age"></span><br>
+
+        <label>Address</label><br>
+        <textarea onfocus="focusEffect(this)" onblur="blurEffect(this)"></textarea><br><br>
+        <span id="ad"></span>
+
+        <label>Gender</label><br>
+        <input type="radio" name="radio" >Male
+        <input type="radio" name="radio" >Female <br><br>
+        
+        <label>Course</label><br>
+        <select name="select" onfocus="focusEffect(this)" onblur="blurEffect(this)" required>
+            <option>India</option>
+            <option>Australia</option>
+        </select><br><br>
+        
+        <button type="button">Submit</button>
+    </form>
+</body>
+</html>
