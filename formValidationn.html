@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+        form{
+            background-color: aqua;
+            margin-left: 500px;
+            width: 400px;
+            border: 2px solid red;
+            padding: 20px;
+        }
+        button{
+            background-color: rgb(11, 7, 128);
+            padding: 5px;
+            padding-left: 80px;
+            padding-right: 80px;
+            color: white;
+        }
+        button:hover{
+            background-color: rgb(110, 3, 3);
+        }
+
+    </style>
+</head>
+<body>
+    <script>
+        function focusEvent(x){
+            x.style.background = "lightblue";
+        }
+        function blurEvent(x){
+            x.style.background = "white";
+        }
+
+        function nameValidation(){
+            let name = document.getElementsByName("Name")[0].value;
+            let pattern = /[0-9]/;
+            if (pattern.test(name) || name.length == 0){
+                document.getElementById("nm").innerHTML = "Invalid name";
+            }
+            else{
+                document.getElementById("nm").innerHTML = "";
+            }
+        }
+
+        function emailvalidation(){
+            let email = document.getElementsByName("email")[0].value;
+            let dotpos = email.lastIndexOf(".");
+            let atpos = email.indexOf("@");
+            if (atpos < 1 || dotpos - atpos < 2){
+                document.getElementById("em").innerHTML = "Invalid email";
+            }
+            else{
+                document.getElementById("em").innerHTML = "";
+            }
+        }
+        function passvalidation(){
+            let pass = document.getElementsByName("pass")[0].value;
+            let pattern = /^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[!@#].{8,})$/
+            if (!pattern.test(pass)){
+                document.getElementById("ps").innerHTML = "Invalid Password";
+            }
+            else{
+                document.getElementById("ps").innerHTML = "";
+            }
+        }
+        function dobvalidation(){
+            let dob = document.getElementsByName("dob")[0].value;
+            let selecteddate = new Date(dob);
+            let minDate = new Date("1900-01-01");
+            let today = new Date();
+            if(dob=="" || selecteddate < minDate || selecteddate > today){
+                document.getElementById("do").innerHTML = "Enter a valid date";
+            }
+            else{
+                document.getElementById("do").innerHTML = "";
+            }
+        }
+        function validateform(){
+            let comment = document.getElementsByName("comment")[0].value;
+            if (comment.length == 0){
+                document.getElementById("cm").innerHTML = "Comments cannot empty";
+            }
+            else{
+                document.getElementById("cm").innerHTML = "";
+            }
+        }
+
+    </script>
+
+    <form>
+        <label>Name</label><br>
+        <input type="text" name="Name" onfocus="focusEvent(this)" onblur="blurEvent(this); nameValidation()" ><br>
+        <span id="nm"></span><br><br>
+
+        <label>Email</label><br>
+        <input type="text" name="email" onfocus="focusEvent(this)" onblur="blurEvent(this); emailvalidation()"><br>
+        <span id="em"></span><br><br>
+
+        <label>Password</label><br>
+        <input type="text" name="pass" onfocus="focusEvent(this)" onblur="blurEvent(this); passvalidation() "><br>
+        <span id="ps"></span><br><br>
+
+        <label>Date of Birth</label><br>
+        <input type="date" name="dob" onfocus="focusEvent(this)" onblur="blurEvent(this); dobvalidation()" ><br>
+        <span id="do"></span><br><br>
+
+        <label>Upload Profile Picture</label><br>
+        <input type="file" accept="pdf" onfocus = "focusEvent(this)" onblur="blurEvent(this); uploadvalidate()"><br>
+        <span id="up"></span><br><br>
+
+        <label>Comments</label><br>
+        <textarea name="comment" onfocus="focusEvent(this)" onblur="blurEvent(this); validateform()"></textarea><br>
+        <span id="cm"></span><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
