@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        .container{
+            display: flex;
+        }
+    </style>
+
+</head>
+<body>
+    <script>
+        function Headphone(){
+            let quantity = document.getElementById("hq").innerHTML;
+            let total = document.getElementById("ht").innerHTML;
+            quantity = parseInt(quantity) + 1;
+            total = 59.99 * quantity;
+            document.getElementById("hq").innerHTML = quantity;
+            document.getElementById("ht").innerHTML = total;
+        }
+
+        function Watch(){
+            let quantity = document.getElementById("wq").innerHTML;
+            let total = document.getElementById("wt").innerHTML;
+            quantity = parseInt(quantity) + 1;
+            total = 89.99 * quantity;
+            document.getElementById("wq").innerHTML = quantity;
+            document.getElementById("wt").innerHTML = total;
+        }
+
+        function Bag(){
+            let quantity = document.getElementById("bq").innerHTML;
+            let total = document.getElementById("bt").innerHTML;
+            quantity = parseInt(quantity) + 1;
+            total = 39.99 * quantity;
+            document.getElementById("bq").innerHTML = quantity;
+            document.getElementById("bt").innerHTML = total;
+        }
+        function total(){
+            let Htotal=document.getElementById("ht").innerHTML;
+            let Wtotal=document.getElementById("wt").innerHTML;
+            let Btotal=document.getElementById("bt").innerHTML;
+            document.getElementById("gt").innerHTML = parseFloat(Htotal) + parseFloat(Wtotal) + parseFloat(Btotal);
+        }
+
+    </script>
+
+    <div class = "container">
+
+        <div id="headphone">
+            <img src="car.jpg" width="400px" >
+            <h2>Wireless Headphones</h2>
+            <h2>$59.99</h2>
+            <input type="button" value="Add to cart" onclick="Headphone();total()"><br><br>
+        </div>
+        <div id="watch">
+            <img src="BMW M5 Competition.jpg" width="400px">
+            <h2>Smart Watch</h2>
+            <h2>$89.99</h2>
+            <input type="button" value="Add to cart" onclick="Watch();total()"><br><br>
+        </div>
+        <div id="bag">
+            <img src="F1.jpg" width="400px">
+            <h2>Backpack</h2>
+            <h2>$39.99</h2>
+            <input type="button" value="Add to cart" onclick="Bag();total()"><br><br>
+        </div>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td>Headphones</td>
+                <td>$59.99</td>
+                <td id="hq">0</td>
+                <td id="ht">0</td>
+            </tr>
+            <tr>
+                <td>Watch</td>
+                <td>$89.99</td>
+                <td id="wq">0</td>
+                <td id="wt">0</td>
+            </tr>
+            <tr>
+                <td>Bag</td>
+                <td>$39.99</td>
+                <td id="bq">0</td>
+                <td id="bt">0</td>
+            </tr>
+            <tr>
+                <td colspan="3">Grand Total</td>
+                <td id="gt"></td>
+            </tr>
+        </table>
+        
+    </div>
+
+</body>
+</html>
